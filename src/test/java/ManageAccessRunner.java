@@ -6,8 +6,9 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/main/resources/features/manageAccess.feature",
         glue = {"steps"},
-       tags="@createuser"
-        //   tags="@regression and @shakeout"
+        tags="@createuser",
+        //   tags="@regression and @shakeout",
+        dryRun=false
 )
 
 

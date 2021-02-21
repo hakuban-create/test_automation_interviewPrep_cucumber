@@ -1,0 +1,11 @@
+
+search files =====> (java, feature, runner) double shift  (tap shift key twice)
+search word in file =====> (cmd+F or ctrl+F)
+search word globally =====> (cmd+shift+F or ctrl+shift+F)
+replace word in file =====> (cmd+R or ctrl+R)
+replace word globally =====> (cmd+shift+R or ctrl+shift+R)
+format code =====> (option+cmnd+L or Windows alt+ctrl+L)
+
+step back and fort ======> (option+cmnd+'-> || <-'   or alt+ctrl+'-> || <-' )
+
+Framework Flow: ======>   LoginRunner => login.feature => LoginSteps => LoginImpl (using webelement from LoginPage, using driver from WebdriverUtils)
