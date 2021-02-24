@@ -75,7 +75,16 @@ public class LoginImpl {
         String elementXpath = String.format(CommonPage.XPATH_TEMPLATE_BUTTON, buttonName);
         WebElement element = WebdriverUtils.getWebDriver().findElement(By.xpath(elementXpath));
         MiscUtils.highlightElement(element).click();
-        MiscUtils.sleep(3000);
+        CucumberLogUtils.logPass(buttonName + " button was successfully clicked ", true);
+    }
+
+    public void clickButton(String buttonName, String windowName) {
+        String elementXpath = null;
+        if(windowName.contains("User Delete Window")) {
+             elementXpath = String.format(CommonPage.XPATH_TEMPLATE_DELETE_USER, buttonName);
+        }
+        WebElement element = WebdriverUtils.getWebDriver().findElement(By.xpath(elementXpath));
+        MiscUtils.highlightElement(element).click();
         CucumberLogUtils.logPass(buttonName + " button was successfully clicked ", true);
     }
 

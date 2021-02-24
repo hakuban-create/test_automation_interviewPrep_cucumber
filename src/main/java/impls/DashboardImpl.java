@@ -7,7 +7,7 @@ import utils.CucumberLogUtils;
 import utils.WebdriverUtils;
 
 import java.util.List;
-import java.util.NoSuchElementException;
+
 
 public class DashboardImpl {
 
@@ -29,7 +29,7 @@ public class DashboardImpl {
             }
 
         }
-        CucumberLogUtils.logPass("All the dashboards are displayed as expected: " +dashboardList, true);
+        CucumberLogUtils.logPass("All the dashboards are displayed as expected: " + dashboardList, true);
 
     }
 
@@ -37,9 +37,20 @@ public class DashboardImpl {
         String elementXpath = String.format(CommonPage.XPATH_TEMPLATE_TEXT, errorMessage);
         WebElement webElement = WebdriverUtils.getWebDriver().findElement(By.xpath(elementXpath));
 
-        if(webElement.isDisplayed())
-        {
-            CucumberLogUtils.logPass("'" + errorMessage + "' is displayed as expected " ,true);
+        if (webElement.isDisplayed()) {
+            CucumberLogUtils.logPass("'" + errorMessage + "' is displayed as expected ", true);
         }
+    }
+
+    public void deleteDashboards(List<String> dashbaordList) {
+        for (String each : dashbaordList) { //Khali //Cucumber
+            String elementXpath = String.format(CommonPage.XPATH_TEMPLATE_DELETE_DASHBAORD_BUTTON, each);
+            WebElement webElement = WebdriverUtils.getWebDriver().findElement(By.xpath(elementXpath));
+
+            webElement.click();
+
+            CucumberLogUtils.logPass("Clicked " + each + " delete button", true);
+        }
+
     }
 }
