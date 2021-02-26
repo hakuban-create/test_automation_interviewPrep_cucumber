@@ -1,11 +1,11 @@
 Feature: Login
 
-  @testLogin
+  @testLogin @regression
   Scenario: opening the page
     Given I navigate to Interview Prep
     Then I should see the "Login" page
-    Then I enter "test@yahoo.com" in the "Email" input box
-    Then I enter "testuser123" in the "Password" input box
+    Then I enter "test@yahoo.com" in the "Enter Username" input box
+    Then I enter "testuser123" in the "Enter Password" input box
     Then I click "Login" button
     Then I should see the "Home" page
     Then I click "Coding" button
@@ -19,8 +19,8 @@ Feature: Login
   Scenario Outline: Verify <user> user can login to HomePage
     Given I navigate to Interview Prep
     Then I should see the "Login" page
-    Then I enter "<email>" in the "Email" input box
-    Then I enter "<password>" in the "Password" input box
+    Then I enter "<email>" in the "Enter Username" input box
+    Then I enter "<password>" in the "Enter Password" input box
     Then I click "Login" button
     Then I should see the "Home" page
 

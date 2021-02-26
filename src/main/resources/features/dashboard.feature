@@ -1,5 +1,6 @@
 Feature: Dashboards
 
+  @regression
   Scenario: Adding new dashboard
     Given I navigate to Interview Prep
     Then I should see the "Login" page
@@ -35,27 +36,30 @@ Feature: Dashboards
     Then I should see "already exists" error message
     Then I delete the following dashboard:
       | Khali |
+    Then I click "Delete" button
 
 
 
 
 
 
-    Given I navigate to Interview Prep
-    Given I navigate to Interview Prep
-    Then I should see the "Login" page
-    Then I enter "admin@yahoo.com" in the "Email" input box
-    Then I enter "adminuser123" in the "Password" input box
-    And I click "Login" button
-    Then I should see the "Home" page
-    And I click "Manage Access" link
-    Then I enter the following values in the following fields
-      | First Name | John                 |
-      | Last Name  | Smith                |
-      | Email      | john.smith@gmail.com |
-    And I choose "Student" from dropdown "Role"
-    And I choose "4" from dropdown "Batch"
-    And I click "Add User" button
-    And I click "Action" button of user "john.smith@gmail.com"
-    And I click "Delete" button
+
+#
+#
+#  Scenario Outline: Validate user can be able add and delete in "<sections>" section
+#    Given I navigate to Interview Prep
+#    Then I enter "test@yahoo.com" in the "Enter Username" input box
+#    Then I enter "testuser123" in the "Enter Password" input box
+#    And I click "Login" button
+#    Then I should see "<sections>" section
+#    Then I click "<buttons>" button
+#    And I enter "message text" in input box
+#    Then I click "Enter" button
+#    And I validate "message text" is displayed in "<sections>" window
+#    Then I click "Delete" button
+#    And I validate "message text" is  Not displayed in "<sections>" window
+#    Examples:
+#      | sections | buttons   |
+#      | Do's     | Add do    |
+#      | Dont's   | Add don't |
 
