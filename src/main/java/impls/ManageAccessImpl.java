@@ -1,19 +1,20 @@
 package impls;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import pages.CommonPage;
-import pages.ManageAccessPage;
-import utils.CucumberLogUtils;
-import utils.MiscUtils;
-import utils.WebdriverUtils;
+        import org.openqa.selenium.By;
+        import org.openqa.selenium.WebElement;
+        import org.openqa.selenium.support.ui.Select;
+        import pages.CommonPage;
+        import pages.ManageAccessPage;
+        import utils.CucumberLogUtils;
+        import utils.MiscUtils;
+        import utils.WebdriverUtils;
 
-import java.util.*;
+        import java.util.*;
 
 public class ManageAccessImpl {
 
     public void clickLink(String linkText) {
+        MiscUtils.sleep(3000);
         String elementXpath = String.format(CommonPage.XPATH_TEMPLATE_LINK, linkText);
         WebElement element = WebdriverUtils.getWebDriver().findElement(By.xpath(elementXpath));
         element.click();
@@ -95,7 +96,7 @@ public class ManageAccessImpl {
 
     public void clickAction(String buttonName, String email) {
         if(email.equals("*") && buttonName.equals("*")){
-          CucumberLogUtils.logFail("Invalid entry, cannot accept wild card", false);
+            CucumberLogUtils.logFail("Invalid entry, cannot accept wild card", false);
         }
 
         String elementXpath = String.format(CommonPage.XPATH_TEMPLATE_USER_BUTTON,email, buttonName );
@@ -106,4 +107,13 @@ public class ManageAccessImpl {
         CucumberLogUtils.logPass("Successfully clicked the button " + buttonName + " for " + email, false);
     }
 
+    public void editUser(Map<String, String> newUserDetails) {
+        for(String each : newUserDetails.keySet()) {
+            String elementXpath = String.format(CommonPage.XPATH_TEMPLATE_EDIT_USER, each);
+            WebElement element = WebdriverUtils.getWebDriver().findElement(By.xpath(elementXpath));
+            if(element.getTagName().equals("input")) element.clear();
+            element.sendKeys(newUserDetails.get(each));
+        }
+        CucumberLogUtils.logPass("All entries have updated" , false);
+    }
 }

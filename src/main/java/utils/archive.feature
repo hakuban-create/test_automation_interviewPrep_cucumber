@@ -37,7 +37,7 @@ Feature: Archive
   Scenario Outline: Validate user can be able add and delete in "<sections>" section
     Given I navigate to Interview Prep
     Then I enter "test@yahoo.com" in the "Enter Username" input box
-    Then I enter "testuser123" in the "Enter Password" input box
+    Then I enter "testUserPassword" in the "Enter Password" input box
     And I click "Login" button
     Then I should see "<sections>" section
     Then I click "<buttons>" button
@@ -60,7 +60,7 @@ Feature: Archive
     Given I navigate to Interview Prep
     Then I should see the "Login" page
     Then I enter "admin@yahoo.com" in the "Enter Username" input box
-    Then I enter "adminuser123" in the "Enter Password" input box
+    Then I enter "adminUserPassword" in the "Enter Password" input box
     Then I click "Login" button
     Then I should see the "Home" page
     Then I click "<dashboard>" button
@@ -82,7 +82,7 @@ Feature: Archive
     Given I navigate to Interview Prep
     Then I should see the login page
     Then I enter "test@yahoo.com" in the Email input box
-    And I enter "testuser123" in the Password input box
+    And I enter "testUserPassword" in the Password input box
     And I click "Login" button
     Then I validate I am on "Interview Prep home" page
     Then I click "<dashboard>" button
@@ -114,7 +114,7 @@ Feature: Archive
     Given I navigate to Interview Prep
     Then I should see the login page
     Then I enter "admin@yahoo.com" in the Email input box
-    And I enter "adminuser123" in the Password input box
+    And I enter "adminUserPassword" in the Password input box
     And I click "Login" button
     Then I validate I am on "Interview Prep home" page
     And I click "Manage Access" link
@@ -147,7 +147,7 @@ Feature: Archive
     Given I navigate to Interview Prep
     Then I should see the login page
     Then I enter "admin@yahoo.com" in the Email input box
-    And I enter "adminuser123" in the Password input box
+    And I enter "adminUserPassword" in the Password input box
     And I click "Login" button
     Then I validate I am on "Interview Prep home" page
     And I click "Manage Access" link

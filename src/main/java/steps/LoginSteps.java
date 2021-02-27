@@ -19,7 +19,7 @@ public class LoginSteps {
         LoginImpl impl = new LoginImpl();
         impl.validateCurrentPage(pageName);
     }
-
+//============
     @Then("I enter {string} in the {string} input box")
     public void iEnterInTheInputBox(String value, String inputBoxName) {
         LoginImpl impl = new LoginImpl();
@@ -32,5 +32,10 @@ public class LoginSteps {
         impl.clickButton(buttonName);
     }
 
+    @And("I click {string} button in {string}")
+    public void iClickButtonIn(String buttonName, String windowName) {
+        LoginImpl impl = new LoginImpl();
+        impl.clickButton(buttonName, windowName);
+    }
 }
 

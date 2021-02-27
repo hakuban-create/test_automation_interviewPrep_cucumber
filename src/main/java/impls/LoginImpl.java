@@ -4,10 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pages.CommonPage;
 import pages.LoginPage;
-import utils.CucumberLogUtils;
-import utils.LocalConfigUtils;
-import utils.MiscUtils;
-import utils.WebdriverUtils;
+import utils.*;
 
 public class LoginImpl {
 
@@ -28,10 +25,11 @@ public class LoginImpl {
         CucumberLogUtils.logPass("Successfully navigated to the url", false);
     }
 
-    public void validateCurrentPage(String pageName) { //Home
+    public void validateCurrentPage(String pageName) {
+        MiscUtils.sleep(3000);
         boolean pageIsDisplayed = false;
 
-        switch (pageName.toLowerCase()){ //home
+        switch (pageName.toLowerCase()){
             case "login" :
                 pageIsDisplayed = getPage().emailInputBox.isDisplayed();
                 break;
@@ -50,6 +48,14 @@ public class LoginImpl {
     }
 
     public void enterInInputBox(String value, String inputBoxName) {
+
+        if(value.contains("UserPassword")) {
+//             value = LocalConfigUtils.getProperty(value);
+//             value = EncryptionUtils.decrypt(value);
+
+            value = EncryptionUtils.decrypt(LocalConfigUtils.getProperty(value));
+        }
+
         String elementXpath = String.format(CommonPage.XPATH_TEMPLATE_INPUT_BOX, inputBoxName);
         WebElement element = WebdriverUtils.getWebDriver().findElement(By.xpath(elementXpath));
         element.sendKeys(value);
@@ -72,6 +78,9 @@ public class LoginImpl {
 //    }
 
     public void clickButton(String buttonName) {
+//        if(buttonName.contains("don't")){
+//            buttonName = "don";
+//        }
         String elementXpath = String.format(CommonPage.XPATH_TEMPLATE_BUTTON, buttonName);
         WebElement element = WebdriverUtils.getWebDriver().findElement(By.xpath(elementXpath));
         MiscUtils.highlightElement(element).click();

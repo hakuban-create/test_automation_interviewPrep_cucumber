@@ -40,7 +40,9 @@ public class CucumberLogUtils {
 
     }
 
-
+    public static void logInfo(String message) {
+        currentScenario.write(getLogTime() + " INFO: " + message);
+    }
 
 
     public static String getLogTime(){

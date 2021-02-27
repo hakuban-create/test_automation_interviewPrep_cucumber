@@ -4,11 +4,12 @@ import io.cucumber.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty" , "html:target/DashboardRunner"},
-        features = "src/main/resources/features/dashboard.feature:3",
+        plugin = {"pretty" , "html:target/DashboardRunner",
+                "rerun:target/Rerun_Failed/DashboardRunner.txt"},
+        features = "src/main/resources/features/manageAccess.feature",
         glue = {"steps"}
         , stepNotifications = true
-//        tags="@test1 or @test2"
+       // tags="@regression"
         //   tags="@regression and @shakeout"
 )
 
